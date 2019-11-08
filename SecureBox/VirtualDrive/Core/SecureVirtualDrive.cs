@@ -26,10 +26,7 @@ namespace VirtualDrive.Core
 
         public SecureVirtualDrive(string path)
         {
-            if (!Directory.Exists(path))
-                throw new ArgumentException(nameof(path));
-
-            this._path = path;
+            _path = path ?? throw new ArgumentNullException(nameof(path));
         }
 
         private string GetPath(string fileName)
