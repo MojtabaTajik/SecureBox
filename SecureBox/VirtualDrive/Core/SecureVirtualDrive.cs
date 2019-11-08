@@ -494,10 +494,16 @@ namespace VirtualDrive.Core
         public NtStatus GetDiskFreeSpace(out long freeBytesAvailable, out long totalNumberOfBytes, out long totalNumberOfFreeBytes, IDokanFileInfo info)
         {
             var dinfo = DriveInfo.GetDrives().Single(di => string.Equals(di.RootDirectory.Name, Path.GetPathRoot(_path + "\\"), StringComparison.OrdinalIgnoreCase));
+            long sizeInBytes = Directory.EnumerateFiles(_path, "*", SearchOption.AllDirectories).Sum(fileInfo => new FileInfo(fileInfo).Length);
 
+            totalNumberOfBytes = dinfo.TotalFreeSpace;
+            freeBytesAvailable = dinfo.TotalFreeSpace - sizeInBytes;
+            totalNumberOfFreeBytes = dinfo.TotalFreeSpace - sizeInBytes; ;
+            /*
             freeBytesAvailable = dinfo.TotalFreeSpace;
             totalNumberOfBytes = dinfo.TotalSize;
             totalNumberOfFreeBytes = dinfo.AvailableFreeSpace;
+            */
             return DokanResult.Success;
         }
 
