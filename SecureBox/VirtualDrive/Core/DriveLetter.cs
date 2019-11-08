@@ -9,7 +9,7 @@ namespace VirtualDrive.Core
     {
         public static string UnusedDriveLetter()
         {
-            var validLetters = Enumerable.Range('A', 'Z').Select(c => (char) c).ToList();
+            var validLetters = Properties.Resources.ValidDriveLetters.Reverse();
 
             var usedDriveLetters = UsedDriveLetters();
 
