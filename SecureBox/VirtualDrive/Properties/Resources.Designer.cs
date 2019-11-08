@@ -61,7 +61,7 @@ namespace VirtualDrive.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 50B4BCD6-9ED0-4E86.
+        ///   Looks up a localized string similar to SecureBoxFS.
         /// </summary>
         internal static string FileSystem {
             get {

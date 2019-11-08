@@ -8,12 +8,12 @@ namespace Service
     public class SecureBoxService : IHostedService
     {
         private readonly ILogger<SecureBoxService> _logger;
-        private readonly global::VirtualDrive.VirtualDrive _virtualDrive;
+        private readonly VirtualDrive.VirtualDrive _virtualDrive;
 
         public SecureBoxService(ILogger<SecureBoxService> logger)
         {
             _logger = logger;
-            _virtualDrive = new global::VirtualDrive.VirtualDrive(@"D:\SB");
+            _virtualDrive = new VirtualDrive.VirtualDrive(@"D:\SB");
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -22,7 +22,7 @@ namespace Service
 
             var startTask = new Task(() =>
             {
-                _virtualDrive.MoundVirtualDrive();
+                _virtualDrive.MountVirtualDrive();
             }, cancellationToken);
 
             startTask.Start();
@@ -36,7 +36,7 @@ namespace Service
 
             var stopTask = new Task(() =>
             {
-                _virtualDrive.UnmountVirtualDrive();
+                _virtualDrive.UnMountVirtualDrive();
             }, cancellationToken);
 
             stopTask.Start();

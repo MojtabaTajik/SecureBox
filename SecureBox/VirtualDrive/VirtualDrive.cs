@@ -1,5 +1,8 @@
 ﻿using DokanNet;
+using System.IO;
+using System.Linq;
 using VirtualDrive.Core;
+using VirtualDrive.Properties;
 
 namespace VirtualDrive
 {
@@ -13,13 +16,19 @@ namespace VirtualDrive
             _virtualDrive = new SecureVirtualDrive(path);
         }
 
-        public string MoundVirtualDrive()
+        public string MountVirtualDrive()
         {
             try
             {
-                _mountPoint = DriveLetter.UnusedDriveLetter();
+                // Get mount point, maybe the SecureBox file system already mounted
+                _mountPoint = GetMountPoint();
 
-                _virtualDrive.Mount(_mountPoint, DokanOptions.DebugMode | DokanOptions.EnableNotificationAPI, 5);
+                if (string.IsNullOrEmpty(_mountPoint))
+                {
+                    _mountPoint = DriveLetter.UnusedDriveLetter();
+
+                    _virtualDrive.Mount(_mountPoint, DokanOptions.DebugMode | DokanOptions.EnableNotificationAPI, 5);
+                }
 
                 return _mountPoint;
             }
@@ -29,12 +38,15 @@ namespace VirtualDrive
             }
         }
 
-        public bool UnmountVirtualDrive()
+        public bool UnMountVirtualDrive()
         {
             if (_mountPoint == null)
                 return false;
 
             return Dokan.Unmount(_mountPoint[0]);
         }
+
+        private string GetMountPoint() => DriveInfo.GetDrives()
+            .FirstOrDefault(drive => drive.DriveFormat == Resources.FileSystem)?.RootDirectory?.FullName;
     }
 }
