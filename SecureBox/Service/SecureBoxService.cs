@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+using VirtualDrive.Utils;
 
 namespace Service
 {
@@ -13,7 +14,7 @@ namespace Service
         public SecureBoxService(ILogger<SecureBoxService> logger)
         {
             _logger = logger;
-            _virtualDrive = new VirtualDrive.VirtualDrive(@"D:\SB");
+            _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.SecureBoxRealPath());
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
