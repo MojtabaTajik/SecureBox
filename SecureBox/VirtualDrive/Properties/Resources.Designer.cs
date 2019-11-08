@@ -61,11 +61,29 @@ namespace VirtualDrive.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 50B4BCD6-9ED0-4E86.
+        /// </summary>
+        internal static string FileSystem {
+            get {
+                return ResourceManager.GetString("FileSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ABCDEFGHIJKLMNOPQRSTUVWXYZ.
         /// </summary>
         internal static string ValidDriveLetters {
             get {
                 return ResourceManager.GetString("ValidDriveLetters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SecureBox.
+        /// </summary>
+        internal static string VolumeLabel {
+            get {
+                return ResourceManager.GetString("VolumeLabel", resourceCulture);
             }
         }
     }

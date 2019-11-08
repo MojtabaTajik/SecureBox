@@ -1,6 +1,4 @@
 ﻿using DokanNet;
-using System.Collections.Generic;
-using System.IO;
 using VirtualDrive.Core;
 
 namespace VirtualDrive
@@ -10,9 +8,9 @@ namespace VirtualDrive
         private readonly SecureVirtualDrive _virtualDrive;
         private string _mountPoint;
 
-        public VirtualDrive(SecureVirtualDrive virtualDrive)
+        public VirtualDrive(string path)
         {
-            _virtualDrive = virtualDrive;
+            _virtualDrive = new SecureVirtualDrive(path);
         }
 
         public string MoundVirtualDrive()
@@ -37,16 +35,6 @@ namespace VirtualDrive
                 return false;
 
             return Dokan.Unmount(_mountPoint[0]);
-        }
-
-        private IEnumerable<char> CurrentDrivesLetters()
-        {
-            DriveInfo[] allDrives = DriveInfo.GetDrives();
-
-            foreach (DriveInfo driveInfo in allDrives)
-            {
-                yield return driveInfo.Name[0];
-            }
         }
     }
 }
