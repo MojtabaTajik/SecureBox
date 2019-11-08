@@ -43,7 +43,7 @@ namespace VirtualDrive
             if (_mountPoint == null)
                 return false;
 
-            return Dokan.Unmount(_mountPoint[0]);
+            return Dokan.Unmount(_mountPoint[0]) && Dokan.RemoveMountPoint(_mountPoint);
         }
 
         private string GetMountPoint() => DriveInfo.GetDrives()

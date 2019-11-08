@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace VirtualDrive.Core
 {
-    public static class DriveLetter
+    internal static class DriveLetter
     {
         public static string UnusedDriveLetter()
         {

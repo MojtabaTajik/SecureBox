@@ -61,6 +61,15 @@ namespace VirtualDrive.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\DriveIcons.
+        /// </summary>
+        internal static string ExplorerDrivesRegistryPath {
+            get {
+                return ResourceManager.GetString("ExplorerDrivesRegistryPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SecureBoxFS.
         /// </summary>
         internal static string FileSystem {

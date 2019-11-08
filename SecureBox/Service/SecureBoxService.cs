@@ -35,9 +35,9 @@ namespace Service
         {
             _logger.LogInformation("Service Stop");
 
+            _virtualDrive.UnMountVirtualDrive();
             var stopTask = new Task(() =>
             {
-                _virtualDrive.UnMountVirtualDrive();
             }, cancellationToken);
 
             stopTask.Start();

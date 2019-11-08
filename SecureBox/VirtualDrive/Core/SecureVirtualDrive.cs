@@ -1,22 +1,18 @@
-﻿using System;
+﻿using DokanNet;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
-using DokanNet;
-using Microsoft.Win32.SafeHandles;
 using VirtualDrive.Properties;
+using VirtualDrive.Utils;
 using FileAccess = DokanNet.FileAccess;
 
 namespace VirtualDrive.Core
 {
-    public class SecureVirtualDrive : IDokanOperations
+    internal class SecureVirtualDrive : IDokanOperations
     {
-        [DllImport("kernel32", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetFileTime(SafeFileHandle hFile, ref long lpCreationTime, ref long lpLastAccessTime, ref long lpLastWriteTime);
-
         private readonly string _path;
 
         private const FileAccess DataAccess = FileAccess.ReadData | FileAccess.WriteData | FileAccess.AppendData |
@@ -352,7 +348,7 @@ namespace VirtualDrive.Core
                     var ct = creationTime?.ToFileTime() ?? 0;
                     var lat = lastAccessTime?.ToFileTime() ?? 0;
                     var lwt = lastWriteTime?.ToFileTime() ?? 0;
-                    if (SetFileTime(stream.SafeFileHandle, ref ct, ref lat, ref lwt))
+                    if (Win32Api.SetFileTime(stream.SafeFileHandle, ref ct, ref lat, ref lwt))
                         return NtStatus.Success;
                     throw Marshal.GetExceptionForHR(Marshal.GetLastWin32Error());
                 }
