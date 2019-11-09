@@ -123,6 +123,9 @@
   <data name="FileSystem" xml:space="preserve">
     <value>SecureBoxFS</value>
   </data>
+  <data name="SandboxieServiceName" xml:space="preserve">
+    <value>SbieSvc</value>
+  </data>
   <data name="ValidDriveLetters" xml:space="preserve">
     <value>ABCDEFGHIJKLMNOPQRSTUVWXYZ</value>
   </data>
