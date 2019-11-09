@@ -61,6 +61,15 @@ namespace Service.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SbieSvc.
+        /// </summary>
+        internal static string SandboxieServiceName {
+            get {
+                return ResourceManager.GetString("SandboxieServiceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SecureBox Service.
         /// </summary>
         internal static string ServiceName {

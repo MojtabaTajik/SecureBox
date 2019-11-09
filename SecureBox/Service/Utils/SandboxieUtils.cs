@@ -1,8 +1,8 @@
-﻿using System.Linq;
+﻿using Service.Properties;
+using System.Linq;
 using System.ServiceProcess;
-using VirtualDrive.Properties;
 
-namespace VirtualDrive.Utils
+namespace Service.Utils
 {
     public class SandboxieUtils
     {
