@@ -22,5 +22,10 @@ namespace Data.Operations
 
             return _config.Upsert(configRecord);
         }
+
+        public ConfigEntity ReadConfig()
+        {
+            return _config.FindAll().ToList().FirstOrDefault();
+        }
     }
 }
