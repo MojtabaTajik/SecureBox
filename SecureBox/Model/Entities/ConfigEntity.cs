@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Shared;
+﻿using Shared.Types;
+using System.Collections.Generic;
 
 namespace Model.Entities
 {

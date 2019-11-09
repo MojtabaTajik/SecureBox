@@ -8,4 +8,8 @@
     <PackageReference Include="LiteDB" Version="4.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Operations\" />
+  </ItemGroup>
+
 </Project>

@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{652BC10D-6B58-4A3F-9B67-DC109333952A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{6E719C30-617F-4D95-BAFE-723CD0CA978F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Database\Data.csproj", "{6E719C30-617F-4D95-BAFE-723CD0CA978F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

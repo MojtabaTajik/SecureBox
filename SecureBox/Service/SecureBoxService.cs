@@ -1,11 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using DokanNet;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Shared.Utils;
+using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using DokanNet;
-using VirtualDrive.Utils;
 
 namespace Service
 {
@@ -17,7 +17,7 @@ namespace Service
         public SecureBoxService(ILogger<SecureBoxService> logger)
         {
             _logger = logger;
-            _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.SecureBoxRealPath());
+            _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.VirtualDriveMirrorPath());
             _virtualDrive.OnRequestFileOpen += OnRequestFileOpen;
         }
 
