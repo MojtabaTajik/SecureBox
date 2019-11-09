@@ -1,12 +1,19 @@
 ﻿using System;
 using System.IO;
+using Microsoft.Win32;
 using Shared.Properties;
 
 namespace Shared.Utils
 {
     public static class PathUtils
     {
-        private static string AppDataPath() => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        /// <summary>
+        /// Use CommonApplicationData because our service & UI program run under different user accounts and should have same storage path
+        /// </summary>
+        public static string AppDataPath()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+        }
 
         public static string ProgramFilesPath() => Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
 
