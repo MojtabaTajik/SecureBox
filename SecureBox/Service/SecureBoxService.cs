@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Data;
+using Service.Core;
 
 namespace Service
 {
@@ -21,8 +22,10 @@ namespace Service
             _database = database;
             _logger = logger;
 
+            var virtualDriveRequestHandler = new VirtualDriveRequestHandler();
+
             _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.VirtualDriveMirrorPath());
-            _virtualDrive.OnRequestFileOpen += OnRequestFileOpen;
+            _virtualDrive.OnRequestFileOpen += virtualDriveRequestHandler.OnRequestFileOpen;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -51,12 +54,6 @@ namespace Service
             stopTask.Start();
 
             return stopTask;
-        }
-
-        private NtStatus OnRequestFileOpen(string filepath)
-        {
-            File.AppendAllText("log.txt", filepath + Environment.NewLine);
-            return DokanResult.AccessDenied;
         }
     }
 }
