@@ -6,17 +6,21 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Data;
 
 namespace Service
 {
     public class SecureBoxService : IHostedService
     {
+        private readonly Database _database;
         private readonly ILogger<SecureBoxService> _logger;
         private readonly VirtualDrive.VirtualDrive _virtualDrive;
 
-        public SecureBoxService(ILogger<SecureBoxService> logger)
+        public SecureBoxService(Database database, ILogger<SecureBoxService> logger)
         {
+            _database = database;
             _logger = logger;
+
             _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.VirtualDriveMirrorPath());
             _virtualDrive.OnRequestFileOpen += OnRequestFileOpen;
         }

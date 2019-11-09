@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Data;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging.EventLog;
 
@@ -16,6 +17,7 @@ namespace Service
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<SecureBoxService>()
+                        .AddSingleton(new Database())
                         .Configure<EventLogSettings>(config =>
                         {
                             config.LogName = Properties.Resources.ServiceName;

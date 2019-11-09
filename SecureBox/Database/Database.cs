@@ -6,11 +6,11 @@ using Shared.Utils;
 
 namespace Data
 {
-    public class DbContext
+    public class Database
     {
         public ConfigOperations Config { get; set; }
 
-        public DbContext()
+        public Database()
         {
             string dbPath = Path.Combine(PathUtils.ConfigPath(), Resources.DBFileName);
             var database = new LiteDatabase(dbPath);
