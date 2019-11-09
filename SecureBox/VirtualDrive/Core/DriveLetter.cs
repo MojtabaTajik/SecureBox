@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace VirtualDrive.Core
 {
-    internal static class DriveLetter
+    public static class DriveLetter
     {
         public static string UnusedDriveLetter()
         {
@@ -19,7 +19,7 @@ namespace VirtualDrive.Core
                     return letter.ToString();
             }
 
-            throw new ArgumentException("");
+            throw new ArgumentOutOfRangeException("Drive letter");
         }
 
         private static List<char> UsedDriveLetters()

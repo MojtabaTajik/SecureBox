@@ -79,15 +79,6 @@ namespace VirtualDrive.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SbieSvc.
-        /// </summary>
-        internal static string SandboxieServiceName {
-            get {
-                return ResourceManager.GetString("SandboxieServiceName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ABCDEFGHIJKLMNOPQRSTUVWXYZ.
         /// </summary>
         internal static string ValidDriveLetters {

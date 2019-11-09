@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using Service.Properties;
+using System.Linq;
 using System.ServiceProcess;
-using VirtualDrive.Properties;
 
-namespace VirtualDrive.Utils
+namespace Service.Utils
 {
-    internal class SandboxieUtils
+    public class SandboxieUtils
     {
         public bool SandboxieInstalled()
         {
@@ -13,7 +13,7 @@ namespace VirtualDrive.Utils
             return installedServices.Exists(c => c.ServiceName.Equals(Resources.SandboxieServiceName));
         }
 
-        public bool IsSandboxieServiceAvailable()
+        public bool SandboxieServiceAvailable()
         {
             var installedServices = ServiceController.GetServices().ToList();
 

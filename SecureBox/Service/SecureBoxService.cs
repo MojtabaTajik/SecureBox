@@ -1,7 +1,10 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using System;
+using System.IO;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Threading;
 using System.Threading.Tasks;
+using DokanNet;
 using VirtualDrive.Utils;
 
 namespace Service
@@ -15,6 +18,7 @@ namespace Service
         {
             _logger = logger;
             _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.SecureBoxRealPath());
+            _virtualDrive.OnRequestFileOpen += OnRequestFileOpen;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -43,6 +47,12 @@ namespace Service
             stopTask.Start();
 
             return stopTask;
+        }
+
+        private NtStatus OnRequestFileOpen(string filepath)
+        {
+            File.AppendAllText("log.txt", filepath + Environment.NewLine);
+            return DokanResult.AccessDenied;
         }
     }
 }

@@ -6,13 +6,16 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using VirtualDrive.Properties;
+using VirtualDrive.Types;
 using VirtualDrive.Utils;
 using FileAccess = DokanNet.FileAccess;
 
 namespace VirtualDrive.Core
 {
-    internal class SecureVirtualDrive : IDokanOperations
+    public class SecureVirtualDrive : IDokanOperations
     {
+        public RequestFileOpen OnRequestFileOpen { get; set; }
+
         private readonly string _path;
 
         private const FileAccess DataAccess = FileAccess.ReadData | FileAccess.WriteData | FileAccess.AppendData |
@@ -117,7 +120,7 @@ namespace VirtualDrive.Core
                                 {
                                     try
                                     {
-                                        //return DokanResult.FileNotFound;
+                                        return OnRequestFileOpen?.Invoke(filePath) ?? DokanResult.Success;
                                     }
                                     catch (Exception ex)
                                     {
