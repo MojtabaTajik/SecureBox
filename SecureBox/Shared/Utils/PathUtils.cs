@@ -8,6 +8,8 @@ namespace Shared.Utils
     {
         private static string AppDataPath() => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
+        public static string ProgramFilesPath() => Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
         public static string ConfigPath()
         {
             string path = Path.Combine(AppDataPath(), Resources.AppName);
