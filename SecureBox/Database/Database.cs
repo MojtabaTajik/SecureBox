@@ -16,6 +16,13 @@ namespace Data
             var database = new LiteDatabase(dbPath);
 
             Config = new ConfigOperations(database);
+
+            SeedData();
+        }
+
+        private void SeedData()
+        {
+            new Seed().SeedConfig(Config);
         }
     }
 }
