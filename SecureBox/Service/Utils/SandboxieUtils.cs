@@ -1,4 +1,7 @@
-﻿using Service.Properties;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using Service.Properties;
 using System.Linq;
 using System.ServiceProcess;
 
@@ -19,6 +22,28 @@ namespace Service.Utils
 
             return installedServices.FirstOrDefault(f => f.ServiceName.Equals(Resources.SandboxieServiceName))
                        ?.Status == ServiceControllerStatus.Running;
+        }
+
+        public bool StartSandboxed(string filePath)
+        {
+            if (string.IsNullOrEmpty(filePath))
+                return false;
+
+            string executer = SandboxieCommandLineExecutablePath();
+            if (!File.Exists(executer))
+                return false;
+
+            Process.Start(executer, filePath);
+            return true;
+        }
+
+        private string SandboxieCommandLineExecutablePath()
+        {
+            string programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            string sandboxieCommandLineExecutablePath = Path.Combine(programFiles, Resources.SandboxieName,
+                Resources.SandboxieCommandLineExecutable);
+
+            return sandboxieCommandLineExecutablePath;
         }
     }
 }

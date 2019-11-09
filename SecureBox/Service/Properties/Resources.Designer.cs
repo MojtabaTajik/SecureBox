@@ -61,6 +61,24 @@ namespace Service.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start.exe.
+        /// </summary>
+        internal static string SandboxieCommandLineExecutable {
+            get {
+                return ResourceManager.GetString("SandboxieCommandLineExecutable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sandboxie.
+        /// </summary>
+        internal static string SandboxieName {
+            get {
+                return ResourceManager.GetString("SandboxieName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SbieSvc.
         /// </summary>
         internal static string SandboxieServiceName {
