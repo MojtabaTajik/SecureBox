@@ -120,7 +120,16 @@ namespace VirtualDrive.Core
                                 {
                                     try
                                     {
-                                        return OnRequestFileOpen?.Invoke(filePath) ?? DokanResult.Success;
+                                        bool executing = access.HasFlag(FileAccess.ReadData)
+                                                         && access.HasFlag(FileAccess.Execute)
+                                                         && access.HasFlag(FileAccess.ReadAttributes)
+                                                         && access.HasFlag(FileAccess.Synchronize)
+                                                         && share.HasFlag(FileShare.Read)
+                                                         && share.HasFlag(FileShare.Delete)
+                                                         && attributes.HasFlag(FileAttributes.Normal);
+
+                                        if (executing)
+                                            return OnRequestFileOpen?.Invoke(filePath) ?? DokanResult.Success;
                                     }
                                     catch (Exception ex)
                                     {

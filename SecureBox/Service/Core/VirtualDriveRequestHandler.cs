@@ -2,12 +2,15 @@
 using Model.Entities;
 using System;
 using System.IO;
+using Service.Utils;
+using Shared.Types;
 
 namespace Service.Core
 {
-    internal class VirtualDriveRequestHandler
+    public class VirtualDriveRequestHandler
     {
         private readonly ConfigEntity _config;
+        private readonly SandboxieUtils _sandboxie = new SandboxieUtils();
 
         public VirtualDriveRequestHandler(ConfigEntity config)
         {
@@ -16,8 +19,30 @@ namespace Service.Core
 
         public NtStatus OnRequestFileOpen(string filepath)
         {
-            File.AppendAllText("log.txt", filepath + Environment.NewLine);
-            return DokanResult.AccessDenied;
+            switch (_config.ProtectMode)
+            {
+                case ProtectMode.None:
+                    return DokanResult.AccessDenied;
+
+                case ProtectMode.SandboxAll:
+                {
+                    _sandboxie.StartSandboxed(filepath);
+                    return DokanResult.Unsuccessful;
+                }
+
+                case ProtectMode.ScanAll:
+                {
+                    return DokanResult.AccessDenied;
+                }
+
+                case ProtectMode.ScanThenSandbox:
+                {
+                    return DokanResult.AccessDenied;
+                }
+
+                default:
+                    return DokanResult.AccessDenied;
+            }
         }
     }
 }
