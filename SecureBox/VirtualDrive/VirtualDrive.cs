@@ -1,13 +1,16 @@
 ﻿using DokanNet;
+using System;
 using System.IO;
-using System.Linq;
 using VirtualDrive.Core;
 using VirtualDrive.Properties;
+using VirtualDrive.Types;
 
 namespace VirtualDrive
 {
     public class VirtualDrive
     {
+        public RequestFileOpen OnRequestFileOpen { get; set; }
+
         private readonly SecureVirtualDrive _virtualDrive;
         private string _mountPoint;
 
@@ -20,6 +23,8 @@ namespace VirtualDrive
         {
             try
             {
+                _virtualDrive.OnRequestFileOpen += OnRequestFileOpen;
+
                 // Get mount point, maybe the SecureBox file system already mounted
                 _mountPoint = GetMountPoint();
 
@@ -46,7 +51,24 @@ namespace VirtualDrive
             return Dokan.Unmount(_mountPoint[0]) && Dokan.RemoveMountPoint(_mountPoint);
         }
 
-        private string GetMountPoint() => DriveInfo.GetDrives()
-            .FirstOrDefault(drive => drive.DriveFormat == Resources.FileSystem)?.RootDirectory?.FullName;
+        private string GetMountPoint()
+        {
+            var drivesInfo = DriveInfo.GetDrives();
+
+            foreach (DriveInfo driveInfo in drivesInfo)
+            {
+                try
+                {
+                    if (driveInfo.DriveFormat == Resources.FileSystem)
+                        return driveInfo.RootDirectory.FullName;
+                }
+                catch (Exception ex)
+                {
+                    
+                }
+            }
+
+            return null;
+        }
     }
 }
