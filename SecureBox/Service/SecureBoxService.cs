@@ -10,16 +10,15 @@ namespace Service
 {
     public class SecureBoxService : IHostedService
     {
-        private readonly Database _database;
         private readonly ILogger<SecureBoxService> _logger;
         private readonly VirtualDrive.VirtualDrive _virtualDrive;
 
         public SecureBoxService(Database database, ILogger<SecureBoxService> logger)
         {
-            _database = database;
             _logger = logger;
 
-            var virtualDriveRequestHandler = new VirtualDriveRequestHandler();
+            var config = database.Config.ReadConfig();
+            var virtualDriveRequestHandler = new VirtualDriveRequestHandler(config);
 
             _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.VirtualDriveMirrorPath());
             _virtualDrive.OnRequestFileOpen += virtualDriveRequestHandler.OnRequestFileOpen;
