@@ -1,13 +1,10 @@
-﻿using DokanNet;
+﻿using Data;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Service.Core;
 using Shared.Utils;
-using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Data;
-using Service.Core;
 
 namespace Service
 {
