@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualDrive", "VirtualDrive\VirtualDrive.csproj", "{AD9EC8BF-A678-437F-8BB2-B232DB7208D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{77A8F62D-866D-45E2-A8B1-5B769C9CC289}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{77A8F62D-866D-45E2-A8B1-5B769C9CC289}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{652BC10D-6B58-4A3F-9B67-DC109333952A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{652BC10D-6B58-4A3F-9B67-DC109333952A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Database\Data.csproj", "{6E719C30-617F-4D95-BAFE-723CD0CA978F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Database\Data.csproj", "{6E719C30-617F-4D95-BAFE-723CD0CA978F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{A21ADDA6-1BAC-439E-90AA-A1DE811CAC11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{6E719C30-617F-4D95-BAFE-723CD0CA978F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E719C30-617F-4D95-BAFE-723CD0CA978F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E719C30-617F-4D95-BAFE-723CD0CA978F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21ADDA6-1BAC-439E-90AA-A1DE811CAC11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21ADDA6-1BAC-439E-90AA-A1DE811CAC11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21ADDA6-1BAC-439E-90AA-A1DE811CAC11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21ADDA6-1BAC-439E-90AA-A1DE811CAC11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
