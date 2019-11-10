@@ -12,7 +12,7 @@ using FileAccess = DokanNet.FileAccess;
 
 namespace VirtualDrive.Core
 {
-    public class SecureVirtualDrive : IDokanOperations
+    public class VirtualDriveImpl : IDokanOperations
     {
         public RequestFileOpen OnRequestFileOpen { get; set; }
 
@@ -27,7 +27,7 @@ namespace VirtualDrive.Core
                                                    FileAccess.Delete |
                                                    FileAccess.GenericWrite;
 
-        public SecureVirtualDrive(string path)
+        public VirtualDriveImpl(string path)
         {
             _path = path ?? throw new ArgumentNullException(nameof(path));
         }

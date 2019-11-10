@@ -11,12 +11,12 @@ namespace VirtualDrive
     {
         public RequestFileOpen OnRequestFileOpen { get; set; }
 
-        private readonly SecureVirtualDrive _virtualDrive;
+        private readonly VirtualDriveImpl _virtualDrive;
         private string _mountPoint;
 
         public VirtualDrive(string path)
         {
-            _virtualDrive = new SecureVirtualDrive(path);
+            _virtualDrive = new VirtualDriveImpl(path);
         }
 
         public string MountVirtualDrive()
