@@ -1,11 +1,9 @@
 ﻿using DokanNet;
 using Model.Entities;
-using System;
-using System.IO;
 using Service.Utils;
 using Shared.Types;
 
-namespace Service.Core
+namespace Service.Core.RequestHandlers
 {
     public class VirtualDriveRequestHandler
     {
