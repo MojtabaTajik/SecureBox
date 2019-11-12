@@ -1,18 +1,20 @@
-﻿using DokanNet;
+﻿using System.Threading.Tasks;
+using DokanNet;
 using Model.Entities;
-using Service.Utils;
 using Shared.Types;
+using ZetaIpc.Runtime.Client;
 
 namespace Service.Core.RequestHandlers
 {
     public class VirtualDriveRequestHandler
     {
         private readonly ConfigEntity _config;
-        private readonly SandboxieUtils _sandboxie = new SandboxieUtils();
+        private readonly IpcClient _ipcClient;
 
-        public VirtualDriveRequestHandler(ConfigEntity config)
+        public VirtualDriveRequestHandler(ConfigEntity config, IpcClient ipcClient)
         {
             _config = config;
+            _ipcClient = ipcClient;
         }
 
         public NtStatus OnRequestFileOpen(string filepath)
@@ -24,7 +26,7 @@ namespace Service.Core.RequestHandlers
 
                 case ProtectMode.SandboxAll:
                 {
-                    _sandboxie.StartSandboxed(filepath);
+                    Task.Run(() => _ipcClient.Send(filepath));
                     return DokanResult.Unsuccessful;
                 }
 

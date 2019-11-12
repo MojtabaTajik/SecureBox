@@ -4,11 +4,21 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <ApplicationIcon>SecureBox.ico</ApplicationIcon>
+    <LangVersion>8.0</LangVersion>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IPCServer\**" />
+    <EmbeddedResource Remove="IPCServer\**" />
+    <None Remove="IPCServer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DokanNet" Version="1.3.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="3.0.0" />
+    <PackageReference Include="ZetaIpc" Version="1.0.0.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,10 +40,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="IPCServer\" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,11 @@
-﻿using System;
+﻿using GUI.Properties;
+using System;
 using System.Diagnostics;
 using System.IO;
-using Service.Properties;
 using System.Linq;
 using System.ServiceProcess;
 
-namespace Service.Utils
+namespace GUI.Utils
 {
     public class SandboxieUtils
     {
@@ -26,7 +26,7 @@ namespace Service.Utils
 
         public bool StartSandboxed(string filePath)
         {
-            if (string.IsNullOrEmpty(filePath))
+            if (! File.Exists(filePath))
                 return false;
 
             string executer = SandboxieCommandLineExecutablePath();

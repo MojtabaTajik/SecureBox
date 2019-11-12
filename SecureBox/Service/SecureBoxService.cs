@@ -1,10 +1,12 @@
 ﻿using Data;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Service.Core;
+using Service.Core.RequestHandlers;
 using Shared.Utils;
 using System.Threading;
 using System.Threading.Tasks;
+using ZetaIpc.Runtime.Client;
+using ZetaIpc.Runtime.Server;
 
 namespace Service
 {
@@ -16,9 +18,17 @@ namespace Service
         public SecureBoxService(Database database, ILogger<SecureBoxService> logger)
         {
             _logger = logger;
+            
+            // IPC initialization
+            var ipcServer = new IpcServer();
+            ipcServer.ReceivedRequest += OnCommandReceived;
+            ipcServer.Start(7523);
+
+            var ipcClient = new IpcClient();
+            ipcClient.Initialize(7524);
 
             var config = database.Config.ReadConfig();
-            var virtualDriveRequestHandler = new VirtualDriveRequestHandler(config);
+            var virtualDriveRequestHandler = new VirtualDriveRequestHandler(config, ipcClient);
 
             _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.VirtualDriveMirrorPath());
             _virtualDrive.OnRequestFileOpen += virtualDriveRequestHandler.OnRequestFileOpen;
@@ -50,6 +60,11 @@ namespace Service
             stopTask.Start();
 
             return stopTask;
+        }
+
+        private void OnCommandReceived(object sender, ReceivedRequestEventArgs receivedRequestEventArgs)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
