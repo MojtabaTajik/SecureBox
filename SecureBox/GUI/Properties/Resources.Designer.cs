@@ -61,6 +61,15 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure, you want to exit SecureBox GUI ?.
+        /// </summary>
+        internal static string CloseAppConfirm {
+            get {
+                return ResourceManager.GetString("CloseAppConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start.exe.
         /// </summary>
         internal static string SandboxieCommandLineExecutable {
