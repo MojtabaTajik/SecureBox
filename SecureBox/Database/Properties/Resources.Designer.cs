@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Service.Properties {
+namespace Data.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Service.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Service.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Data.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,11 @@ namespace Service.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start.exe.
+        ///   Looks up a localized string similar to Config.db.
         /// </summary>
-        internal static string SandboxieCommandLineExecutable {
+        internal static string DBFileName {
             get {
-                return ResourceManager.GetString("SandboxieCommandLineExecutable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sandboxie.
-        /// </summary>
-        internal static string SandboxieName {
-            get {
-                return ResourceManager.GetString("SandboxieName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SbieSvc.
-        /// </summary>
-        internal static string SandboxieServiceName {
-            get {
-                return ResourceManager.GetString("SandboxieServiceName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SecureBox Service.
-        /// </summary>
-        internal static string ServiceName {
-            get {
-                return ResourceManager.GetString("ServiceName", resourceCulture);
+                return ResourceManager.GetString("DBFileName", resourceCulture);
             }
         }
     }

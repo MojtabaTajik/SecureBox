@@ -117,16 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SandboxieCommandLineExecutable" xml:space="preserve">
-    <value>Start.exe</value>
-  </data>
-  <data name="SandboxieName" xml:space="preserve">
-    <value>Sandboxie</value>
-  </data>
-  <data name="SandboxieServiceName" xml:space="preserve">
-    <value>SbieSvc</value>
-  </data>
-  <data name="ServiceName" xml:space="preserve">
-    <value>SecureBox Service</value>
+  <data name="DBFileName" xml:space="preserve">
+    <value>Config.db</value>
   </data>
 </root>

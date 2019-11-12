@@ -126,7 +126,4 @@
   <data name="SandboxieServiceName" xml:space="preserve">
     <value>SbieSvc</value>
   </data>
-  <data name="ServiceName" xml:space="preserve">
-    <value>SecureBox Service</value>
-  </data>
 </root>

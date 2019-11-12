@@ -1,11 +1,12 @@
-﻿using System;
-using System.IO;
+﻿using Data;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Service.Core.RequestHandlers;
+using Shared.Utils;
 using System.Threading;
 using System.Threading.Tasks;
-using DokanNet;
-using VirtualDrive.Utils;
+using ZetaIpc.Runtime.Client;
+using ZetaIpc.Runtime.Server;
 
 namespace Service
 {
@@ -14,11 +15,23 @@ namespace Service
         private readonly ILogger<SecureBoxService> _logger;
         private readonly VirtualDrive.VirtualDrive _virtualDrive;
 
-        public SecureBoxService(ILogger<SecureBoxService> logger)
+        public SecureBoxService(Database database, ILogger<SecureBoxService> logger)
         {
             _logger = logger;
-            _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.SecureBoxRealPath());
-            _virtualDrive.OnRequestFileOpen += OnRequestFileOpen;
+            
+            // IPC initialization
+            var ipcServer = new IpcServer();
+            ipcServer.ReceivedRequest += OnCommandReceived;
+            ipcServer.Start(7523);
+
+            var ipcClient = new IpcClient();
+            ipcClient.Initialize(7524);
+
+            var config = database.Config.ReadConfig();
+            var virtualDriveRequestHandler = new VirtualDriveRequestHandler(config, ipcClient);
+
+            _virtualDrive = new VirtualDrive.VirtualDrive(PathUtils.VirtualDriveMirrorPath());
+            _virtualDrive.OnRequestFileOpen += virtualDriveRequestHandler.OnRequestFileOpen;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -49,10 +62,9 @@ namespace Service
             return stopTask;
         }
 
-        private NtStatus OnRequestFileOpen(string filepath)
+        private void OnCommandReceived(object sender, ReceivedRequestEventArgs receivedRequestEventArgs)
         {
-            File.AppendAllText("log.txt", filepath + Environment.NewLine);
-            return DokanResult.AccessDenied;
+            throw new System.NotImplementedException();
         }
     }
 }

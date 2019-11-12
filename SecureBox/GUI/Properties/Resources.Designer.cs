@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Service.Properties {
+namespace GUI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Service.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Service.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -84,15 +84,6 @@ namespace Service.Properties {
         internal static string SandboxieServiceName {
             get {
                 return ResourceManager.GetString("SandboxieServiceName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SecureBox Service.
-        /// </summary>
-        internal static string ServiceName {
-            get {
-                return ResourceManager.GetString("ServiceName", resourceCulture);
             }
         }
     }
