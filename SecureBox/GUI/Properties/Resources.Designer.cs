@@ -88,11 +88,29 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sandboxie is not installed or &quot;SbieSvc&quot; is not running. Please install Sandboxie.
+        /// </summary>
+        internal static string SandboxieNotFound {
+            get {
+                return ResourceManager.GetString("SandboxieNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SbieSvc.
         /// </summary>
         internal static string SandboxieServiceName {
             get {
                 return ResourceManager.GetString("SandboxieServiceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.sandboxie.com/.
+        /// </summary>
+        internal static string SandboxieWebsite {
+            get {
+                return ResourceManager.GetString("SandboxieWebsite", resourceCulture);
             }
         }
     }

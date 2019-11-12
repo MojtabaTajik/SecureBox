@@ -1,22 +1,15 @@
-﻿using GUI.Properties;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceProcess;
+using GUI.Properties;
 
 namespace GUI.Utils
 {
     public class SandboxieUtils
     {
-        public bool SandboxieInstalled()
-        {
-            var installedServices = ServiceController.GetServices().ToList();
-
-            return installedServices.Exists(c => c.ServiceName.Equals(Resources.SandboxieServiceName));
-        }
-
-        public bool SandboxieServiceAvailable()
+        public static bool SandboxieServiceAvailable()
         {
             var installedServices = ServiceController.GetServices().ToList();
 
@@ -26,7 +19,10 @@ namespace GUI.Utils
 
         public bool StartSandboxed(string filePath)
         {
-            if (! File.Exists(filePath))
+            if (!SandboxieServiceAvailable())
+                return false;
+
+            if (!File.Exists(filePath))
                 return false;
 
             string executer = SandboxieCommandLineExecutablePath();

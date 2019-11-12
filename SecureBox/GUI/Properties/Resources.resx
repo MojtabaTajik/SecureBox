@@ -126,7 +126,13 @@
   <data name="SandboxieName" xml:space="preserve">
     <value>Sandboxie</value>
   </data>
+  <data name="SandboxieNotFound" xml:space="preserve">
+    <value>Sandboxie is not installed or "SbieSvc" is not running. Please install Sandboxie</value>
+  </data>
   <data name="SandboxieServiceName" xml:space="preserve">
     <value>SbieSvc</value>
+  </data>
+  <data name="SandboxieWebsite" xml:space="preserve">
+    <value>https://www.sandboxie.com/</value>
   </data>
 </root>
