@@ -32,7 +32,7 @@ namespace VirtualDrive
                 {
                     _mountPoint = DriveLetter.UnusedDriveLetter();
 
-                    _virtualDrive.Mount(_mountPoint, DokanOptions.DebugMode | DokanOptions.EnableNotificationAPI, 5);
+                    _virtualDrive.Mount(_mountPoint, DokanOptions.FixedDrive, 20);
                 }
 
                 return _mountPoint;
