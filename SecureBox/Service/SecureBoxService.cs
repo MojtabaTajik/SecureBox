@@ -22,10 +22,10 @@ namespace Service
             // IPC initialization
             var ipcServer = new IpcServer();
             ipcServer.ReceivedRequest += OnCommandReceived;
-            ipcServer.Start(7523);
+            ipcServer.Start(Shared.Constants.ServerIpcServerPort);
 
             var ipcClient = new IpcClient();
-            ipcClient.Initialize(7524);
+            ipcClient.Initialize(Shared.Constants.GUIIpcServerPort);
 
             var config = database.Config.ReadConfig();
             var virtualDriveRequestHandler = new VirtualDriveRequestHandler(config, ipcClient);

@@ -2,6 +2,7 @@
 {
     public static class Constants
     {
-        public static int IpcPort = 7632;
+        public static int ServerIpcServerPort = 7524;
+        public static int GUIIpcServerPort = 7523;
     }
 }
