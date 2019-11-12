@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using DokanNet;
 using Model.Entities;
 using Shared.Types;
@@ -21,13 +22,22 @@ namespace Service.Core.RequestHandlers
         {
             switch (_config.ProtectMode)
             {
-                case ProtectMode.None:
-                    return DokanResult.AccessDenied;
-
                 case ProtectMode.SandboxAll:
                 {
-                    Task.Run(() => _ipcClient.Send(filepath));
-                    return DokanResult.Unsuccessful;
+                    Task.Run(() =>
+                    {
+                        try
+                        {
+
+                            return _ipcClient.Send(filepath);
+                        }
+                        catch (Exception e)
+                        {
+                            return null;
+                        }
+                    });
+
+                    return DokanResult.FileNotFound;
                 }
 
                 case ProtectMode.ScanAll:
