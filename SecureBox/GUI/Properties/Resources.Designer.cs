@@ -70,6 +70,15 @@ namespace GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SecureBoxMutex.
+        /// </summary>
+        internal static string MutexName {
+            get {
+                return ResourceManager.GetString("MutexName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start.exe.
         /// </summary>
         internal static string SandboxieCommandLineExecutable {

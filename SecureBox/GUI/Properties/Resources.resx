@@ -120,6 +120,9 @@
   <data name="CloseAppConfirm" xml:space="preserve">
     <value>Are you sure, you want to exit SecureBox GUI ?</value>
   </data>
+  <data name="MutexName" xml:space="preserve">
+    <value>SecureBoxMutex</value>
+  </data>
   <data name="SandboxieCommandLineExecutable" xml:space="preserve">
     <value>Start.exe</value>
   </data>
