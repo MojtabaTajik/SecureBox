@@ -64,7 +64,6 @@ namespace VirtualDrive
                 }
                 catch (Exception ex)
                 {
-                    
                 }
             }
 

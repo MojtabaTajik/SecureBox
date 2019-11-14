@@ -1,9 +1,9 @@
-﻿using System;
+﻿using GUI.Properties;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.ServiceProcess;
-using GUI.Properties;
 
 namespace GUI.Utils
 {

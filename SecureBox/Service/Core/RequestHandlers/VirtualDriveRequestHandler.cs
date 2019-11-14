@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using DokanNet;
+﻿using DokanNet;
 using Model.Entities;
 using Shared.Types;
+using System;
+using System.Threading.Tasks;
 using ZetaIpc.Runtime.Client;
 
 namespace Service.Core.RequestHandlers
@@ -23,32 +23,31 @@ namespace Service.Core.RequestHandlers
             switch (_config.ProtectMode)
             {
                 case ProtectMode.SandboxAll:
-                {
-                    Task.Run(() =>
                     {
-                        try
+                        Task.Run(() =>
                         {
+                            try
+                            {
+                                return _ipcClient.Send(filepath);
+                            }
+                            catch (Exception e)
+                            {
+                                return null;
+                            }
+                        });
 
-                            return _ipcClient.Send(filepath);
-                        }
-                        catch (Exception e)
-                        {
-                            return null;
-                        }
-                    });
-
-                    return DokanResult.FileNotFound;
-                }
+                        return DokanResult.FileNotFound;
+                    }
 
                 case ProtectMode.ScanAll:
-                {
-                    return DokanResult.AccessDenied;
-                }
+                    {
+                        return DokanResult.AccessDenied;
+                    }
 
                 case ProtectMode.ScanThenSandbox:
-                {
-                    return DokanResult.AccessDenied;
-                }
+                    {
+                        return DokanResult.AccessDenied;
+                    }
 
                 default:
                     return DokanResult.AccessDenied;

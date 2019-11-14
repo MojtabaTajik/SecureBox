@@ -1,16 +1,16 @@
-﻿using System;
+﻿using GUI.Properties;
+using GUI.Utils;
+using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
-using GUI.Properties;
-using GUI.Utils;
 
 namespace GUI
 {
-    static class Program
+    internal static class Program
     {
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             var sandboxieAvailable = SandboxieUtils.SandboxieServiceAvailable();
             if (!sandboxieAvailable)

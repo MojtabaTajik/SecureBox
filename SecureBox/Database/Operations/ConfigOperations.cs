@@ -1,6 +1,6 @@
-﻿using System.Linq;
-using LiteDB;
+﻿using LiteDB;
 using Model.Entities;
+using System.Linq;
 
 namespace Data.Operations
 {

@@ -18,7 +18,7 @@ namespace Service
         public SecureBoxService(Database database, ILogger<SecureBoxService> logger)
         {
             _logger = logger;
-            
+
             // IPC initialization
             var ipcServer = new IpcServer();
             ipcServer.ReceivedRequest += OnCommandReceived;
