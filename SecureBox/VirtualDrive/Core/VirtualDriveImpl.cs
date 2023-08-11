@@ -199,6 +199,7 @@ namespace VirtualDrive.Core
                     {
                         case 0x80070020: //Sharing violation
                             return DokanResult.SharingViolation;
+
                         default:
                             throw;
                     }
@@ -228,7 +229,6 @@ namespace VirtualDrive.Core
 
         public void CloseFile(string fileName, IDokanFileInfo info)
         {
-
             (info.Context as FileStream)?.Dispose();
             info.Context = null;
             //Trace(nameof(CloseFile), fileName, info, DokanResult.Success);
@@ -422,7 +422,6 @@ namespace VirtualDrive.Core
 
             try
             {
-
                 if (!exist)
                 {
                     info.Context = null;

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Shared.Properties;
+using System;
 using System.IO;
-using Microsoft.Win32;
-using Shared.Properties;
 
 namespace Shared.Utils
 {

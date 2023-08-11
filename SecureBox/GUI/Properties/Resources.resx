@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CloseAppConfirm" xml:space="preserve">
+    <value>Are you sure, you want to exit SecureBox GUI ?</value>
+  </data>
+  <data name="MutexName" xml:space="preserve">
+    <value>SecureBoxMutex</value>
+  </data>
   <data name="SandboxieCommandLineExecutable" xml:space="preserve">
     <value>Start.exe</value>
   </data>
   <data name="SandboxieName" xml:space="preserve">
     <value>Sandboxie</value>
   </data>
+  <data name="SandboxieNotFound" xml:space="preserve">
+    <value>Sandboxie is not installed or "SbieSvc" is not running. Please install Sandboxie</value>
+  </data>
   <data name="SandboxieServiceName" xml:space="preserve">
     <value>SbieSvc</value>
+  </data>
+  <data name="SandboxieWebsite" xml:space="preserve">
+    <value>https://www.sandboxie.com/</value>
   </data>
 </root>
